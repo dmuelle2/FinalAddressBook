@@ -6,7 +6,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.IdentityType; 
 
 @PersistenceCapable(identityType=IdentityType.APPLICATION)
-public class EntryData implements Serializable {
+public class EntryData implements Serializable, Comparable<EntryData>{
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
@@ -105,5 +105,11 @@ public class EntryData implements Serializable {
 				"\n          " + city+", " + state + " " + zip +
 				"\n E-mail: " + email +
 				"\n Phone: " + phone;
+	}
+
+	@Override
+	public int compareTo(EntryData o) {
+		// TODO Auto-generated method stub
+		return this.lastName.compareTo(o.lastName);
 	}
 }

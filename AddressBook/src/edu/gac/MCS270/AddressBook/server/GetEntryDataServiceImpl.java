@@ -21,5 +21,16 @@ public class GetEntryDataServiceImpl extends RemoteServiceServlet implements Get
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public List<EntryData> getLNSortedEntryDataFromServer() { 
+		return AddressBookModel.getLNSortedSearchData();
+	}
+
+	@Override
+	public List<EntryData> getZipSortedEntryDataFromServer() {
+		// TODO Auto-generated method stub
+		return AddressBookModel.getZipSortedSearchData();
+	}
+
 	
 }

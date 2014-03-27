@@ -9,4 +9,8 @@ import edu.gac.MCS270.AddressBook.shared.EntryData;
 
 public interface GetEntryDataServiceAsync {
 	public void getEntryDataFromServer(AsyncCallback<List<EntryData>> asyncCallback);
+
+	public void getLNSortedEntryDataFromServer(AsyncCallback<List<EntryData>> asyncCallback);
+
+	public void getZipSortedEntryDataFromServer(AsyncCallback<List<EntryData>> asyncCallback);
 }

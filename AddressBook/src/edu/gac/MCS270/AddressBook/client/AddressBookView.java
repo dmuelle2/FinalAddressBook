@@ -227,7 +227,7 @@ public class AddressBookView {
 		sortByLastNameButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-//				controller.getSortedEntriesByLastNameFromServer();
+				controller.getSortedEntriesByLastNameFromServer();
 			}
 		});
 		
@@ -236,12 +236,15 @@ public class AddressBookView {
 		sortByZipButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-//				controller.getSortedEntriesByZipFromServer();
+				controller.getSortedEntriesByZipFromServer();
 			}
 		});
 		
+		//Create the search system
+		
 		Button searchForEntryButton = new Button("Search for entry");
 		searchForEntryButton.setText("Search for entry");
+		
 		searchForEntryButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

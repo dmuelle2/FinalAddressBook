@@ -1,6 +1,8 @@
 package edu.gac.MCS270.AddressBook.server;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -13,6 +15,8 @@ import edu.gac.MCS270.AddressBook.shared.EntryData;
 public class AddressBookModel {
 	static final PersistenceManagerFactory pmf = PMF.get();
 	
+	//Do the search -- iterate through all of the entries
+	//add the ones that meet the search query
 	public static List<EntryData> getSearchData(String search) {
    		List<EntryData> entries = getEntryData();
    		List<EntryData> searching = new ArrayList();
@@ -51,6 +55,34 @@ public class AddressBookModel {
         Query query = pm.newQuery(EntryData.class);
         List<EntryData> entries = (List<EntryData>) query.execute();
         return new ArrayList<EntryData>(entries);
+	}
+
+	public static List<EntryData> getLNSortedSearchData() {
+		// TODO Auto-generated method stub
+		
+	   	List<EntryData> entries = getEntryData();
+	   	List<EntryData> sorted = new ArrayList();
+		for (EntryData entry : entries){
+	   		entries.add(entry);
+	   	}
+		Collections.sort(sorted);
+		
+		return sorted;
+	}
+
+	public static List<EntryData> getZipSortedSearchData() {
+		// TODO Auto-generated method stub
+		List<EntryData> entries = getEntryData();
+	   	List<EntryData> sorted = new ArrayList();
+		for (EntryData entry : entries){
+	   		entries.add(entry);
+	   	}
+		Collections.sort(sorted, new Comparator<EntryData>() {
+		    public int compare(EntryData one, EntryData other) {
+		        return String.valueOf(one.getZip()).compareTo(String.valueOf(other.getZip()));
+		    }
+		});
+		return sorted;
 	}
 	
 }

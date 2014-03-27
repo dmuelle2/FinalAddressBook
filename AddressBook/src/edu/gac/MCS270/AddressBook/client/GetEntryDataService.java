@@ -9,5 +9,7 @@ import edu.gac.MCS270.AddressBook.shared.EntryData;
 public interface GetEntryDataService extends RemoteService{
 
 	public List<EntryData> getEntryDataFromServer();
-
+	public List<EntryData> getLNSortedEntryDataFromServer();
+	public List<EntryData> getZipSortedEntryDataFromServer();
+	
 }
