@@ -9,4 +9,11 @@ public class AddressBook implements EntryPoint {
 	public void onModuleLoad() {
 		abView.viewMainPage();
 	}
+	
+	public void handleInfoSearchRequest(String info) {
+        // Need to implement servlet communication
+	}
+
+	
+	
 }

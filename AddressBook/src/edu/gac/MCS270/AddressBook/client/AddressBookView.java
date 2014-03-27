@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -244,7 +245,46 @@ public class AddressBookView {
 		searchForEntryButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-//				controller.searchForEntriesInServer();
+				searchForEntriesInServer();
+			}
+
+			private void searchForEntriesInServer() {
+				
+                VerticalPanel content = new VerticalPanel();
+                content.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+
+                HorizontalPanel inputRow = new HorizontalPanel();
+                Label searchTermLabel = new Label("Search Title Term: ");
+                final TextBox searchTermTextBox = new TextBox();
+                inputRow.add(searchTermLabel);
+                inputRow.add(searchTermTextBox);
+
+                HorizontalPanel btnRow = new HorizontalPanel();
+                btnRow.setStyleName("search-button-row");
+                Button cancelBtn = new Button("Cancel");
+                cancelBtn.addClickHandler(new ClickHandler() {
+                        @Override
+                        public void onClick(ClickEvent event) {
+                                mailingInfoPopup.hide();
+                        }
+              });
+                Button searchBtn = new Button("Search");
+                searchBtn.addClickHandler(new ClickHandler() {
+                        @Override
+                        public void onClick(ClickEvent event) {
+                                controller.handleInfoSearchRequest(searchTermTextBox.getText());
+                                mailingInfoPopup.hide();
+                        }
+              });
+                btnRow.add(cancelBtn);
+                btnRow.add(new Label(""));
+                btnRow.add(searchBtn);
+
+                content.add(inputRow);
+                content.add(btnRow);
+                mailingInfoPopup.setWidget(content);
+                mailingInfoPopup.center();
+				
 			}
 		});
 		
